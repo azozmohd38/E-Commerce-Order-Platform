@@ -7,6 +7,9 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 @Data
 @Builder
 @NoArgsConstructor
@@ -24,6 +27,12 @@ public class OrderItemDTO {
                 .quantity(orderItem.getQuantity())
                 .unitPrice(orderItem.getUnitPrice())
                 .build();
+    }
+    public static List<OrderItemDTO> convertToDTO(List<OrderItem> orderItems) {
+
+        return orderItems.stream()
+                .map(OrderItemDTO::convertToDTO)
+                .collect(Collectors.toList());
     }
 
 
