@@ -44,6 +44,11 @@ public class CategoryService implements CrudService<CategoryDTO> {
         e.setIsActive(false);
         repo.save(e);
     }
+    Category find(Long id) {
+        return EntityHelper.active(repo, id, "Category");
+    }
+
+
 
 
 
