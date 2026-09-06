@@ -26,7 +26,6 @@ public class StoreService implements CrudService<StoreDTO> {
     }
     @Override
     public List<StoreDTO> getAll() {
-
         return StoreDTO.convertToDTO(
                 repo.findAllByIsActiveTrue()
         );
@@ -39,14 +38,18 @@ public class StoreService implements CrudService<StoreDTO> {
     }
     @Override
     public StoreDTO update(Long id, StoreDTO d) {
-
         Store e = find(id);
-
         copy(d, e);
-
         return StoreDTO.convertToDTO(
                 repo.save(e)
         );
+    }
+
+    @Override
+    public void delete(Long id) {
+        Store e = find(id);
+        e.setIsActive(false);
+        repo.save(e);
     }
 
 
