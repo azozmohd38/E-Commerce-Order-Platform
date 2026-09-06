@@ -20,6 +20,8 @@ public class ProductService implements CrudService<ProductDTO> {
         copy(d, e);
         return ProductDTO.convertToDTO(repo.save(e));
     }
-
+    public List<ProductDTO> getAll() {
+        return ProductDTO.convertToDTO(repo.findAllByIsActiveTrue());
+    }
 
 }
