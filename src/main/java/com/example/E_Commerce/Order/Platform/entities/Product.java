@@ -1,4 +1,22 @@
 package com.example.E_Commerce.Order.Platform.entities;
 
-public class Product {
+
+import jakarta.persistence.Entity;
+import lombok.Getter;
+import lombok.Setter;
+
+@Entity
+@Getter
+@Setter
+
+public class Product extends BaseClass {
+
+
+    private String name;
+    private Double price;
+    private Integer stockQuantity;
+    private String sku;
+
+
+
 }
