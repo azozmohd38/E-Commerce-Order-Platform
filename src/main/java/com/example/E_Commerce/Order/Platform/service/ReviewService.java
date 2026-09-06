@@ -63,8 +63,14 @@ public class ReviewService implements CrudService<ReviewDTO> {
 
         repo.save(e);
     }
-
-
-
+    private void copy(ReviewDTO d, Review e) {
+        e.setRating(d.getRating());
+        e.setComment(d.getComment());
+        e.setReviewDate(d.getReviewDate());
+    }
 }
+
+
+
+
 
