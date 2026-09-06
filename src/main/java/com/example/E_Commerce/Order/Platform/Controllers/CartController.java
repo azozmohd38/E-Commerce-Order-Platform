@@ -1,5 +1,6 @@
 package com.example.E_Commerce.Order.Platform.Controllers;
 
+import com.example.E_Commerce.Order.Platform.dto.CartItemDTO;
 import com.example.E_Commerce.Order.Platform.service.CartService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -56,9 +57,16 @@ public class CartController {
 
         service.removeItemFromCart(cartItemId);
     }
+    @PutMapping("updateQuantity")
+    public CartItemDTO updateItemQuantity(
+            @RequestParam Long cartItemId,
+            @RequestParam Integer quantity) {
 
-
-
+        return service.updateItemQuantity(
+                cartItemId,
+                quantity
+        );
+    }
 
 
 }
