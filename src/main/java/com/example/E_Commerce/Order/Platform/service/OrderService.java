@@ -6,6 +6,7 @@ import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import static java.nio.file.Files.find;
 import static java.util.Collections.copy;
 
 @Service
@@ -54,6 +55,14 @@ public class OrderService implements CrudService<OrderDTO> {
         return OrderDTO.convertToDTO(
                 repo.save(e)
         );
+    }
+    public void delete(Long id) {
+
+        Order e = find(id);
+
+        e.setIsActive(false);
+
+        repo.save(e);
     }
 
 
