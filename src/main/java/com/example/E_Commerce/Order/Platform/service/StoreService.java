@@ -22,6 +22,13 @@ public class StoreService implements CrudService<StoreDTO> {
 
 
     }
+    @Override
+    public List<StoreDTO> getAll() {
+
+        return StoreDTO.convertToDTO(
+                repo.findAllByIsActiveTrue()
+        );
+    }
 
 
 
