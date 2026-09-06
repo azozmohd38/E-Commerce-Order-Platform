@@ -26,6 +26,13 @@ public class OrderItemController {
 
         return service.getById(id);
     }
+    @PutMapping("update")
+    public OrderItemDTO update(
+            @RequestParam Long id,
+            @RequestBody OrderItemDTO d) {
+
+        return service.update(id, d);
+    }
 
 
 }
