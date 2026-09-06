@@ -64,5 +64,10 @@ public class CartItemService implements CrudService<CartItemDTO> {
                 "CartItem"
         );
     }
+    private void copy(CartItemDTO d, CartItem e) {
+
+        e.setQuantity(d.getQuantity());
+    }
+
 }
 
