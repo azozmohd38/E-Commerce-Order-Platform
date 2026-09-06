@@ -1,6 +1,8 @@
 package com.example.E_Commerce.Order.Platform.repositories;
 
+import com.example.E_Commerce.Order.Platform.entities.Cart;
 import com.example.E_Commerce.Order.Platform.entities.CartItem;
+import com.example.E_Commerce.Order.Platform.entities.Product;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
@@ -10,4 +12,10 @@ public interface CartItemRepository extends JpaRepository<CartItem, Long> {
 
     List<CartItem> findAllByIsActiveTrue();
     Optional<CartItem> findByIdAndIsActiveTrue(Long id);
+
+    Optional<CartItem> findByCartAndProductAndIsActiveTrue(
+            Cart cart,
+            Product product
+    );
+
 }
