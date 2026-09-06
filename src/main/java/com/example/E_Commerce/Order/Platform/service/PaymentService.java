@@ -71,11 +71,17 @@ public class PaymentService implements CrudService<PaymentDTO> {
                 "Payment"
         );
     }
-
-
-
-
-
-
+    private void copy(PaymentDTO d, Payment e) {
+        e.setAmount(d.getAmount());
+        e.setMethod(d.getMethod());
+        e.setStatus(d.getStatus());
+        e.setPaidDate(d.getPaidDate());
+    }
 }
+
+
+
+
+
+
 
