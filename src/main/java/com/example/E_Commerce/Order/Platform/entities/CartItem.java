@@ -18,5 +18,10 @@ public class CartItem extends BaseClass {
 @OneToOne
     private Cart cart;
 
+@OneToOne
+    private Product product;
+
+
+
 
 }
