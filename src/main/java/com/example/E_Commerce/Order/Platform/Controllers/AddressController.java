@@ -19,6 +19,12 @@ public class AddressController {
     public List<AddressDTO> getAll() {
 
         return service.getAll();
+
+    }
+    @GetMapping("getById")
+    public AddressDTO getById(@RequestParam Long id) {
+
+        return service.getById(id);
     }
 
 
