@@ -25,6 +25,8 @@ public class OrderItem extends BaseClass{
     private Product product;
 
 
+    public OrderItem() {
 
+    }
 
 }
