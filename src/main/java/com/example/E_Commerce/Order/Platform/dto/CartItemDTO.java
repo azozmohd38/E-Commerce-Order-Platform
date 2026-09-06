@@ -6,6 +6,9 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 @Data
 @Builder
 @NoArgsConstructor
@@ -22,6 +25,13 @@ public class CartItemDTO {
                 .quantity(cartItem.getQuantity())
                 .build();
     }
+    public static List<CartItemDTO> convertToDTO(List<CartItem> cartItems) {
+
+        return cartItems.stream()
+                .map(CartItemDTO::convertToDTO)
+                .collect(Collectors.toList());
+    }
+}
 
 }
 
