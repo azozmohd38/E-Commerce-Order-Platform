@@ -27,5 +27,10 @@ public class ProductService implements CrudService<ProductDTO> {
     public ProductDTO getById(Long id) {
         return ProductDTO.convertToDTO(find(id));
     }
+    public ProductDTO update(Long id, ProductDTO d) {
+        Product e = find(id);
+        copy(d, e);
+        return ProductDTO.convertToDTO(repo.save(e));
+    }
 
 }
