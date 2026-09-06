@@ -20,11 +20,16 @@ public class Customer extends BaseClass {
     private String phoneNumber;
     private String gender;
 
-    @OneToOne(mappedBy = "customer", cascade = CascadeType.ALL)
+@OneToOne(mappedBy = "customer", cascade = CascadeType.ALL)
     private Cart cart;
 
-    @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL)
+@OneToMany(mappedBy = "customer", cascade = CascadeType.ALL)
     private List<Order> orders;
+
+@OneToMany(mappedBy = "customer", cascade = CascadeType.ALL)
+    private List<Review> reviews;
+
+
 
 
 
