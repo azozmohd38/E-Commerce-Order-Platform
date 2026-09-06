@@ -2,10 +2,7 @@ package com.example.E_Commerce.Order.Platform.Controllers;
 
 import com.example.E_Commerce.Order.Platform.service.OrderItemService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 RestController
 @RequestMapping("orderItem")
@@ -18,6 +15,11 @@ public class OrderItemController {
     public OrderItemDTO create(@RequestBody OrderItemDTO d) {
 
         return service.create(d);
+    }
+    @GetMapping("getAll")
+    public List<OrderItemDTO> getAll() {
+
+        return service.getAll();
     }
 
 
