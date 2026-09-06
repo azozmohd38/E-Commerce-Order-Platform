@@ -11,5 +11,8 @@ import lombok.Setter;
 
 public class CartItem extends BaseClass {
 
+    private Integer quantity;
+
+
 
 }
