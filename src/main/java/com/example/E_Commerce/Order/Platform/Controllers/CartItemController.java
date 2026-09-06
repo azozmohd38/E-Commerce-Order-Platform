@@ -1,5 +1,6 @@
 package com.example.E_Commerce.Order.Platform.Controllers;
 
+import com.example.E_Commerce.Order.Platform.service.CartItemService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -9,6 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequiredArgsConstructor
 public class CartItemController {
 
+    private final CartItemService service;
 
 }
 
