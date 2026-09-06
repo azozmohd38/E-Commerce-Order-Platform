@@ -39,6 +39,11 @@ public class CategoryService implements CrudService<CategoryDTO> {
         copy(d, e);
         return CategoryDTO.convertToDTO(repo.save(e));
     }
+    public void delete(Long id) {
+        Category e = find(id);
+        e.setIsActive(false);
+        repo.save(e);
+    }
 
 
 
