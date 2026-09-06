@@ -21,6 +21,11 @@ public class CartController {
 
         return service.getAll();
     }
+    @GetMapping("getById")
+    public CartDTO getById(@RequestParam Long id) {
+
+        return service.getById(id);
+    }
 
 
 }
