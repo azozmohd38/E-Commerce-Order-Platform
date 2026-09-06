@@ -71,4 +71,14 @@ public class AddressService implements CrudService<AddressDTO> {
                 "Address"
         );
     }
+    private void copy(AddressDTO d, Address e) {
+
+        e.setStreet(d.getStreet());
+
+        e.setCity(d.getCity());
+
+        e.setPostalCode(d.getPostalCode());
+
+        e.setType(d.getType());
+    }
 }
