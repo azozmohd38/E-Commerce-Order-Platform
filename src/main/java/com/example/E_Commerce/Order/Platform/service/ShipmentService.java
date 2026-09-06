@@ -70,5 +70,14 @@ public class ShipmentService implements CrudService<ShipmentDTO> {
                 "Shipment"
         );
     }
+    private void copy(ShipmentDTO d, Shipment e) {
 
+        e.setTrackingNumber(d.getTrackingNumber());
+
+        e.setStatus(d.getStatus());
+
+        e.setShippedDate(d.getShippedDate());
+    }
 }
+
+
