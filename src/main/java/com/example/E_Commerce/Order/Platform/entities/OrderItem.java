@@ -12,5 +12,10 @@ import lombok.Setter;
 
 public class OrderItem extends BaseClass{
 
+    private Integer quantity;
+    private Double unitPrice;
+
+
+
 
 }
