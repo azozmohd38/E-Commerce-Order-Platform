@@ -26,6 +26,13 @@ public class CustomerController {
 
         return service.getById(id);
     }
+    @PutMapping("update")
+    public CustomerDTO update(
+            @RequestParam Long id,
+            @RequestBody CustomerDTO d) {
+
+        return service.update(id, d);
+    }
 
 }
 
