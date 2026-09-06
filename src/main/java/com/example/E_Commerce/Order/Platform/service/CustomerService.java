@@ -65,8 +65,18 @@ public class CustomerService implements CrudService<CustomerDTO> {
                 "Customer"
         );
     }
+    private void copy(CustomerDTO d, Customer e) {
 
+        e.setName(d.getName());
 
+        e.setEmail(d.getEmail());
 
+        e.setPhoneNumber(d.getPhoneNumber());
 
+        e.setGender(d.getGender());
+    }
 }
+
+
+
+
