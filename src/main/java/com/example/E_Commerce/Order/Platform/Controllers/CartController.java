@@ -26,6 +26,14 @@ public class CartController {
 
         return service.getById(id);
     }
+    @PutMapping("update")
+    public CartDTO update(
+            @RequestParam Long id,
+            @RequestBody CartDTO d) {
+
+        return service.update(id, d);
+    }
+
 
 
 }
