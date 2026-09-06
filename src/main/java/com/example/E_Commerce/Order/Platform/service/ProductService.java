@@ -32,5 +32,9 @@ public class ProductService implements CrudService<ProductDTO> {
         copy(d, e);
         return ProductDTO.convertToDTO(repo.save(e));
     }
-
+    public void delete(Long id) {
+        Product e = find(id);
+        e.setIsActive(false);
+        repo.save(e);
+    }
 }
