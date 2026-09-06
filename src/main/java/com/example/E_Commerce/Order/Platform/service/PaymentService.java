@@ -1,5 +1,6 @@
 package com.example.E_Commerce.Order.Platform.service;
 
+import com.example.E_Commerce.Order.Platform.entities.Payment;
 import com.example.E_Commerce.Order.Platform.repositories.PaymentRepository;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
@@ -54,6 +55,15 @@ public class PaymentService implements CrudService<PaymentDTO> {
                 repo.save(e)
         );
     }
+    public void delete(Long id) {
+
+        Payment e = find(id);
+
+        e.setIsActive(false);
+
+        repo.save(e);
+    }
+
 
 
 
