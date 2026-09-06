@@ -21,5 +21,10 @@ public class PaymentController {
 
         return service.getAll();
     }
+    @GetMapping("getById")
+    public PaymentDTO getById(@RequestParam Long id) {
+
+        return service.getById(id);
+    }
 }
 
