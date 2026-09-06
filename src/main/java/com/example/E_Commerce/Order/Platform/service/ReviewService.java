@@ -55,6 +55,14 @@ public class ReviewService implements CrudService<ReviewDTO> {
                 repo.save(e)
         );
     }
+    public void delete(Long id) {
+
+        Review e = find(id);
+
+        e.setIsActive(false);
+
+        repo.save(e);
+    }
 
 
 
