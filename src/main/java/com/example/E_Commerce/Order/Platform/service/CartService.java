@@ -63,5 +63,14 @@ public class CartService implements CrudService<CartDTO> {
         repo.save(e);
     }
 
+    Cart find(Long id) {
+
+        return EntityHelper.active(
+                repo,
+                id,
+                "Cart"
+        );
+    }
+
 }
 
