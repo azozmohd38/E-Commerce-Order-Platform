@@ -21,6 +21,11 @@ public class OrderItemController {
 
         return service.getAll();
     }
+    @GetMapping("getById")
+    public OrderItemDTO getById(@RequestParam Long id) {
+
+        return service.getById(id);
+    }
 
 
 }
