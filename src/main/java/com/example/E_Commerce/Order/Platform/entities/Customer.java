@@ -7,6 +7,7 @@ import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.core.annotation.Order;
 
 @Entity
 @Getter
@@ -21,6 +22,11 @@ public class Customer extends BaseClass {
 
     @OneToOne(mappedBy = "customer", cascade = CascadeType.ALL)
     private Cart cart;
+
+    @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL)
+    private List<Order> orders;
+
+
 
 
 }
