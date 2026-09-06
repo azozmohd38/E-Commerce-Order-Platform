@@ -26,6 +26,9 @@ private List<Product> products;
 @OneToMany(mappedBy = "store", cascade = CascadeType.ALL)
     private List<Category> categories;
 
+@OneToMany(mappedBy = "store", cascade = CascadeType.ALL)
+    private List<Customer> customers;
+
 
 
 
