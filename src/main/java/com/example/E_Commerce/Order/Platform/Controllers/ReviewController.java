@@ -26,6 +26,14 @@ public class ReviewController {
 
         return service.getById(id);
     }
+    @PutMapping("update")
+    public ReviewDTO update(
+            @RequestParam Long id,
+            @RequestBody ReviewDTO d) {
+
+        return service.update(id, d);
+    }
+
 
 
 
