@@ -63,6 +63,16 @@ public class PaymentService implements CrudService<PaymentDTO> {
 
         repo.save(e);
     }
+    Payment find(Long id) {
+
+        return EntityHelper.active(
+                repo,
+                id,
+                "Payment"
+        );
+    }
+
+
 
 
 
