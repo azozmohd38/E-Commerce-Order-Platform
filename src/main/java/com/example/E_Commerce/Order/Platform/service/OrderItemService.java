@@ -63,5 +63,12 @@ public class OrderItemService implements CrudService<OrderItemDTO> {
 
         repo.save(e);
     }
+    OrderItem find(Long id) {
 
+        return EntityHelper.active(
+                repo,
+                id,
+                "OrderItem"
+        );
+    }
 }
