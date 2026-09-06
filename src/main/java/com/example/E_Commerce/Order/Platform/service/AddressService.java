@@ -55,4 +55,12 @@ public class AddressService implements CrudService<AddressDTO> {
                 repo.save(e)
         );
     }
+    public void delete(Long id) {
+
+        Address e = find(id);
+
+        e.setIsActive(false);
+
+        repo.save(e);
+    }
 }
