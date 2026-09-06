@@ -1,9 +1,12 @@
 package com.example.E_Commerce.Order.Platform.service;
 
+import com.example.E_Commerce.Order.Platform.entities.Order;
 import com.example.E_Commerce.Order.Platform.repositories.OrderRepository;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+
+import static java.util.Collections.copy;
 
 @Service
 @RequiredArgsConstructor
@@ -11,6 +14,48 @@ import org.springframework.stereotype.Service;
 public class OrderService implements CrudService<OrderDTO> {
 
     private final OrderRepository repo;
+
+    public OrderDTO create(OrderDTO d) {
+
+        Order e = new Order();
+
+        copy(d, e);
+
+        e.setIsActive(true);
+
+        return OrderDTO.convertToDTO(
+                repo.save(e)
+        );
+    }
+
+
+    public List<OrderDTO> getAll() {
+
+        return OrderDTO.convertToDTO(
+                repo.findAllByIsActiveTrue()
+        );
+    }
+
+
+    public OrderDTO getById(Long id) {
+
+        return OrderDTO.convertToDTO(
+                find(id)
+        );
+    }
+
+
+    public OrderDTO update(Long id, OrderDTO d) {
+
+        Order e = find(id);
+
+        copy(d, e);
+
+        return OrderDTO.convertToDTO(
+                repo.save(e)
+        );
+    }
+
 
 
 }
