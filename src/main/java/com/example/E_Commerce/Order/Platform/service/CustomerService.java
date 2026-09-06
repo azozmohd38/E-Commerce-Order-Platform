@@ -5,6 +5,7 @@ import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import static java.nio.file.Files.find;
 import static java.util.Collections.copy;
 
 @Service
@@ -28,6 +29,12 @@ public class CustomerService implements CrudService<CustomerDTO> {
 
         return CustomerDTO.convertToDTO(
                 repo.findAllByIsActiveTrue()
+        );
+    }
+    public CustomerDTO getById(Long id) {
+
+        return CustomerDTO.convertToDTO(
+                find(id)
         );
     }
 
