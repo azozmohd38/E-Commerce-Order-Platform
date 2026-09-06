@@ -6,6 +6,8 @@ import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import static java.nio.file.Files.find;
+
 @Service
 @RequiredArgsConstructor
 @Transactional
@@ -27,6 +29,12 @@ public class StoreService implements CrudService<StoreDTO> {
 
         return StoreDTO.convertToDTO(
                 repo.findAllByIsActiveTrue()
+        );
+    }
+    @Override
+    public StoreDTO getById(Long id) {
+        return StoreDTO.convertToDTO(
+                find(id)
         );
     }
 
