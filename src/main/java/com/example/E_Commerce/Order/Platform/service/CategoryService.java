@@ -34,6 +34,12 @@ public class CategoryService implements CrudService<CategoryDTO> {
     public CategoryDTO getById(Long id) {
         return CategoryDTO.convertToDTO(find(id));
     }
+    public CategoryDTO update(Long id, CategoryDTO d) {
+        Category e = find(id);
+        copy(d, e);
+        return CategoryDTO.convertToDTO(repo.save(e));
+    }
+
 
 
 
