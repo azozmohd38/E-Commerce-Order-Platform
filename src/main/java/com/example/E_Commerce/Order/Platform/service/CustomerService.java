@@ -57,6 +57,14 @@ public class CustomerService implements CrudService<CustomerDTO> {
         repo.save(e);
     }
 
+    Customer find(Long id) {
+
+        return EntityHelper.active(
+                repo,
+                id,
+                "Customer"
+        );
+    }
 
 
 
