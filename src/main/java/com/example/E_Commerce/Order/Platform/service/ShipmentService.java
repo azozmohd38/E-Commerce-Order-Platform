@@ -54,5 +54,13 @@ public class ShipmentService implements CrudService<ShipmentDTO> {
                 repo.save(e)
         );
     }
+    public void delete(Long id) {
+
+        Shipment e = find(id);
+
+        e.setIsActive(false);
+
+        repo.save(e);
+    }
 
 }
