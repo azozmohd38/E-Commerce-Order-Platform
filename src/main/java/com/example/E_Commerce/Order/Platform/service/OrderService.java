@@ -72,7 +72,14 @@ public class OrderService implements CrudService<OrderDTO> {
                 "Order"
         );
     }
+    private void copy(OrderDTO d, Order e) {
 
+        e.setOrderDate(d.getOrderDate());
 
+        e.setStatus(d.getStatus());
 
+        e.setTotalAmount(d.getTotalAmount());
+    }
 }
+
+
