@@ -5,10 +5,17 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.Date;
+
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
 public class ShipmentDTO {
+
+    private Long id;
+    private String trackingNumber;
+    private String status;
+    private Date shippedDate;
 
 }
