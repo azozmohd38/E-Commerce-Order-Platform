@@ -51,6 +51,14 @@ public class StoreService implements CrudService<StoreDTO> {
         e.setIsActive(false);
         repo.save(e);
     }
+    Store find(Long id) {
+
+        return EntityHelper.active(
+                repo,
+                id,
+                "Store"
+        );
+    }
 
 
 
