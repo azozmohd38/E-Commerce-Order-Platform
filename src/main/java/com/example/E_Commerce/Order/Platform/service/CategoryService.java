@@ -20,6 +20,14 @@ public class CategoryService implements CrudService<CategoryDTO> {
 
     private final CategoryRepository repo;
 
+    public CategoryDTO create(CategoryDTO d) {
+        Category e = new Category();
+        copy(d, e);
+        return CategoryDTO.convertToDTO(repo.save(e));
+    }
+    public List<CategoryDTO> getAll() {
+        return CategoryDTO.convertToDTO(repo.findAllByIsActiveTrue());
+    }
 
 
 
