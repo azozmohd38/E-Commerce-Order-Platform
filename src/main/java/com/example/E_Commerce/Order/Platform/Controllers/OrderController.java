@@ -21,6 +21,11 @@ public class OrderController {
 
         return service.getAll();
     }
+    @GetMapping("getById")
+    public OrderDTO getById(@RequestParam Long id) {
+
+        return service.getById(id);
+    }
 
 
 
