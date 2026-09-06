@@ -47,6 +47,11 @@ public class CategoryService implements CrudService<CategoryDTO> {
     Category find(Long id) {
         return EntityHelper.active(repo, id, "Category");
     }
+    private void copy(CategoryDTO d, Category e) {
+        e.setName(d.getName());
+        e.setDescription(d.getDescription());
+    }
+}
 
 
 
