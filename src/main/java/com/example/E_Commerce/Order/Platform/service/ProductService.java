@@ -40,4 +40,10 @@ public class ProductService implements CrudService<ProductDTO> {
     Product find(Long id) {
         return EntityHelper.active(repo, id, "Product");
     }
+    private void copy(ProductDTO d, Product e) {
+        e.setName(d.getName());
+        e.setPrice(d.getPrice());
+        e.setStockQuantity(d.getStockQuantity());
+        e.setSku(d.getSku());
+    }
 }
