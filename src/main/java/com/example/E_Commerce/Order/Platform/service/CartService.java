@@ -54,5 +54,14 @@ public class CartService implements CrudService<CartDTO> {
                 repo.save(e)
         );
     }
+    public void delete(Long id) {
+
+        Cart e = find(id);
+
+        e.setIsActive(false);
+
+        repo.save(e);
+    }
+
 }
 
