@@ -21,6 +21,11 @@ public class CustomerController {
 
         return service.getAll();
     }
+    @GetMapping("getById")
+    public CustomerDTO getById(@RequestParam Long id) {
+
+        return service.getById(id);
+    }
 
 }
 
