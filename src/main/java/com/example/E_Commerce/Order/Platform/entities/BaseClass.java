@@ -3,9 +3,13 @@ package com.example.E_Commerce.Order.Platform.entities;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.util.Date;
 
+@Getter
+@Setter
 public class BaseClass {
 
     @Id
@@ -16,5 +20,9 @@ public class BaseClass {
     private Date createdDate;
     private Date updatedDate;
 
+    public BaseClass(){
 
+
+
+    }
 }
