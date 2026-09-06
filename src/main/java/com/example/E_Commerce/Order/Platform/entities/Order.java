@@ -25,5 +25,7 @@ public class Order extends BaseClass {
 @OneToOne(mappedBy = "order", cascade = CascadeType.ALL)
     private Payment payment;
 
+    public Order() {
 
+    }
 }
