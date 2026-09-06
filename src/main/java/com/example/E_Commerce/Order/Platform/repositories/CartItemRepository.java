@@ -11,11 +11,14 @@ import java.util.Optional;
 public interface CartItemRepository extends JpaRepository<CartItem, Long> {
 
     List<CartItem> findAllByIsActiveTrue();
+
     Optional<CartItem> findByIdAndIsActiveTrue(Long id);
 
     Optional<CartItem> findByCartAndProductAndIsActiveTrue(
             Cart cart,
             Product product
     );
+
+    List<CartItem> findAllByCartAndIsActiveTrue(Cart cart);
 
 }
