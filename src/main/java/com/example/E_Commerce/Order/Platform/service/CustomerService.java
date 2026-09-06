@@ -48,6 +48,17 @@ public class CustomerService implements CrudService<CustomerDTO> {
                 repo.save(e)
         );
     }
+    public void delete(Long id) {
+
+        Customer e = find(id);
+
+        e.setIsActive(false);
+
+        repo.save(e);
+    }
+
+
+
 
 
 }
