@@ -1,13 +1,13 @@
 package com.example.E_Commerce.Order.Platform.service;
 
+import com.example.E_Commerce.Order.Platform.dto.OrderItemDTO;
 import com.example.E_Commerce.Order.Platform.entities.OrderItem;
 import com.example.E_Commerce.Order.Platform.repositories.OrderItemRepository;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import static java.nio.file.Files.find;
-import static java.util.Collections.copy;
+import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -15,6 +15,8 @@ import static java.util.Collections.copy;
 public class OrderItemService implements CrudService<OrderItemDTO> {
 
     private final OrderItemRepository repo;
+
+
     public OrderItemDTO create(OrderItemDTO d) {
 
         OrderItem e = new OrderItem();
@@ -55,6 +57,8 @@ public class OrderItemService implements CrudService<OrderItemDTO> {
                 repo.save(e)
         );
     }
+
+
     public void delete(Long id) {
 
         OrderItem e = find(id);
@@ -63,6 +67,8 @@ public class OrderItemService implements CrudService<OrderItemDTO> {
 
         repo.save(e);
     }
+
+
     OrderItem find(Long id) {
 
         return EntityHelper.active(
@@ -71,11 +77,12 @@ public class OrderItemService implements CrudService<OrderItemDTO> {
                 "OrderItem"
         );
     }
+
+
     private void copy(OrderItemDTO d, OrderItem e) {
 
         e.setQuantity(d.getQuantity());
 
         e.setUnitPrice(d.getUnitPrice());
     }
-
 }

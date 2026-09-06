@@ -1,13 +1,14 @@
 package com.example.E_Commerce.Order.Platform.service;
 
+import com.example.E_Commerce.Order.Platform.dto.CustomerDTO;
 import com.example.E_Commerce.Order.Platform.entities.Customer;
 import com.example.E_Commerce.Order.Platform.repositories.CustomerRepository;
-import jakarta.transaction.Transactional;
+import com.example.E_Commerce.Order.Platform.repositories.OrderRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
-import static java.nio.file.Files.find;
-import static java.util.Collections.copy;
+import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -15,6 +16,9 @@ import static java.util.Collections.copy;
 public class CustomerService implements CrudService<CustomerDTO> {
 
     private final CustomerRepository repo;
+
+    private final OrderRepository orderRepository;
+
 
     public CustomerDTO create(CustomerDTO d) {
 
@@ -24,21 +28,29 @@ public class CustomerService implements CrudService<CustomerDTO> {
 
         e.setIsActive(true);
 
-        return CustomerDTO.convertToDTO(repo.save(e));
+        return CustomerDTO.convertToDTO(
+                repo.save(e)
+        );
     }
+
+
     public List<CustomerDTO> getAll() {
 
         return CustomerDTO.convertToDTO(
                 repo.findAllByIsActiveTrue()
         );
     }
+
+
     public CustomerDTO getById(Long id) {
 
         return CustomerDTO.convertToDTO(
                 find(id)
         );
     }
-    ublic CustomerDTO update(Long id, CustomerDTO d) {
+
+
+    public CustomerDTO update(Long id, CustomerDTO d) {
 
         Customer e = find(id);
 
@@ -48,6 +60,8 @@ public class CustomerService implements CrudService<CustomerDTO> {
                 repo.save(e)
         );
     }
+
+
     public void delete(Long id) {
 
         Customer e = find(id);
@@ -57,6 +71,7 @@ public class CustomerService implements CrudService<CustomerDTO> {
         repo.save(e);
     }
 
+
     Customer find(Long id) {
 
         return EntityHelper.active(
@@ -65,6 +80,8 @@ public class CustomerService implements CrudService<CustomerDTO> {
                 "Customer"
         );
     }
+
+
     private void copy(CustomerDTO d, Customer e) {
 
         e.setName(d.getName());
@@ -75,8 +92,12 @@ public class CustomerService implements CrudService<CustomerDTO> {
 
         e.setGender(d.getGender());
     }
+
+
+    public Double getTotalSpent(Long customerId) {
+
+        find(customerId);
+
+        return orderRepository.getTotalSpentByCustomer(customerId);
+    }
 }
-
-
-
-

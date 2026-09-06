@@ -1,19 +1,22 @@
 package com.example.E_Commerce.Order.Platform.service;
 
+import com.example.E_Commerce.Order.Platform.dto.ShipmentDTO;
 import com.example.E_Commerce.Order.Platform.entities.Shipment;
 import com.example.E_Commerce.Order.Platform.repositories.ShipmentRepository;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import static java.nio.file.Files.find;
-import static java.util.Collections.copy;
+import java.util.List;
 
 @Service
 @RequiredArgsConstructor
 @Transactional
 public class ShipmentService implements CrudService<ShipmentDTO> {
+
     private final ShipmentRepository repo;
+
+
     public ShipmentDTO create(ShipmentDTO d) {
 
         Shipment e = new Shipment();
@@ -54,6 +57,8 @@ public class ShipmentService implements CrudService<ShipmentDTO> {
                 repo.save(e)
         );
     }
+
+
     public void delete(Long id) {
 
         Shipment e = find(id);
@@ -62,6 +67,8 @@ public class ShipmentService implements CrudService<ShipmentDTO> {
 
         repo.save(e);
     }
+
+
     Shipment find(Long id) {
 
         return EntityHelper.active(
@@ -70,6 +77,8 @@ public class ShipmentService implements CrudService<ShipmentDTO> {
                 "Shipment"
         );
     }
+
+
     private void copy(ShipmentDTO d, Shipment e) {
 
         e.setTrackingNumber(d.getTrackingNumber());
@@ -79,5 +88,3 @@ public class ShipmentService implements CrudService<ShipmentDTO> {
         e.setShippedDate(d.getShippedDate());
     }
 }
-
-

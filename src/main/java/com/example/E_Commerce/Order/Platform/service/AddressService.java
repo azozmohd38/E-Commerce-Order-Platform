@@ -1,14 +1,13 @@
 package com.example.E_Commerce.Order.Platform.service;
 
-
+import com.example.E_Commerce.Order.Platform.dto.AddressDTO;
 import com.example.E_Commerce.Order.Platform.entities.Address;
 import com.example.E_Commerce.Order.Platform.repositories.AddressRepository;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import static java.nio.file.Files.find;
-import static java.util.Collections.copy;
+import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -16,6 +15,7 @@ import static java.util.Collections.copy;
 public class AddressService implements CrudService<AddressDTO> {
 
     private final AddressRepository repo;
+
 
     public AddressDTO create(AddressDTO d) {
 
@@ -25,7 +25,9 @@ public class AddressService implements CrudService<AddressDTO> {
 
         e.setIsActive(true);
 
-        return AddressDTO.convertToDTO(repo.save(e));
+        return AddressDTO.convertToDTO(
+                repo.save(e)
+        );
     }
 
 
@@ -55,6 +57,8 @@ public class AddressService implements CrudService<AddressDTO> {
                 repo.save(e)
         );
     }
+
+
     public void delete(Long id) {
 
         Address e = find(id);
@@ -63,6 +67,8 @@ public class AddressService implements CrudService<AddressDTO> {
 
         repo.save(e);
     }
+
+
     Address find(Long id) {
 
         return EntityHelper.active(
@@ -71,6 +77,8 @@ public class AddressService implements CrudService<AddressDTO> {
                 "Address"
         );
     }
+
+
     private void copy(AddressDTO d, Address e) {
 
         e.setStreet(d.getStreet());

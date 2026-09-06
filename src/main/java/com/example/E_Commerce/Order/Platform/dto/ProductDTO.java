@@ -1,6 +1,10 @@
 package com.example.E_Commerce.Order.Platform.dto;
 
 import com.example.E_Commerce.Order.Platform.entities.Product;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Positive;
+import jakarta.validation.constraints.PositiveOrZero;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -16,10 +20,21 @@ import java.util.stream.Collectors;
 public class ProductDTO {
 
     private Long id;
+
+    @NotBlank(message = "Product name is required")
     private String name;
+
+    @NotNull(message = "Product price is required")
+    @Positive(message = "Product price must be greater than 0")
     private Double price;
+
+    @NotNull(message = "Stock quantity is required")
+    @PositiveOrZero(message = "Stock quantity cannot be negative")
     private Integer stockQuantity;
+
+    @NotBlank(message = "SKU is required")
     private String sku;
+
 
     public static ProductDTO convertToDTO(Product product) {
 
@@ -31,12 +46,12 @@ public class ProductDTO {
                 .sku(product.getSku())
                 .build();
     }
+
+
     public static List<ProductDTO> convertToDTO(List<Product> products) {
 
         return products.stream()
                 .map(ProductDTO::convertToDTO)
                 .collect(Collectors.toList());
     }
-
 }
-

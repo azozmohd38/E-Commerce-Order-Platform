@@ -1,53 +1,44 @@
 package com.example.E_Commerce.Order.Platform.Controllers;
 
-import com.example.E_Commerce.Order.Platform.dto.AddressDTO;
-import com.example.E_Commerce.Order.Platform.service.AddressService;
+import com.example.E_Commerce.Order.Platform.dto.CategoryDTO;
+import com.example.E_Commerce.Order.Platform.service.CategoryService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("address")
+@RequestMapping("category")
 @RequiredArgsConstructor
-public class AddressController {
+public class CategoryController {
 
-    private final AddressService service;
-
+    private final CategoryService service;
 
     @PostMapping("add")
-    public AddressDTO create(@RequestBody AddressDTO d) {
-
+    public CategoryDTO create(@RequestBody CategoryDTO d) {
         return service.create(d);
     }
 
-
     @GetMapping("getAll")
-    public List<AddressDTO> getAll() {
-
+    public List<CategoryDTO> getAll() {
         return service.getAll();
     }
 
-
     @GetMapping("getById")
-    public AddressDTO getById(@RequestParam Long id) {
-
+    public CategoryDTO getById(@RequestParam Long id) {
         return service.getById(id);
     }
 
-
     @PutMapping("update")
-    public AddressDTO update(
+    public CategoryDTO update(
             @RequestParam Long id,
-            @RequestBody AddressDTO d) {
+            @RequestBody CategoryDTO d) {
 
         return service.update(id, d);
     }
 
-
     @DeleteMapping("delete")
     public void delete(@RequestParam Long id) {
-
         service.delete(id);
     }
 }

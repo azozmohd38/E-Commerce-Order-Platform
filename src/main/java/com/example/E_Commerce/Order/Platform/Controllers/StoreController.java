@@ -1,41 +1,62 @@
-package com.example.E_Commerce.Order.Platform.Controllers;
+package com.example.E_Commerce.Order.Platform.controller;
 
-import com.example.E_Commerce.Order.Platform.service.CategoryService;
+import com.example.E_Commerce.Order.Platform.dto.StoreDTO;
+import com.example.E_Commerce.Order.Platform.service.StoreService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
-@RestController
-@RequestMapping("category")
-@RequiredArgsConstructor
-public class CategoryController {
+import java.util.List;
+import java.util.Map;
 
-    private final CategoryService service;
+@RestController
+@RequestMapping("store")
+@RequiredArgsConstructor
+public class StoreController {
+
+    private final StoreService service;
+
 
     @PostMapping("add")
-    public CategoryDTO create(@RequestBody CategoryDTO d) {
+    public StoreDTO create(@RequestBody StoreDTO d) {
 
         return service.create(d);
     }
+
+
     @GetMapping("getAll")
-    public List<CategoryDTO> getAll() {
+    public List<StoreDTO> getAll() {
 
         return service.getAll();
     }
+
+
     @GetMapping("getById")
-    public CategoryDTO getById(@RequestParam Long id) {
+    public StoreDTO getById(@RequestParam Long id) {
 
         return service.getById(id);
     }
+
+
     @PutMapping("update")
-    public CategoryDTO update(
+    public StoreDTO update(
             @RequestParam Long id,
-            @RequestBody CategoryDTO d) {
+            @RequestBody StoreDTO d) {
 
         return service.update(id, d);
     }
+
+
     @DeleteMapping("delete")
     public void delete(@RequestParam Long id) {
 
         service.delete(id);
+    }
+
+
+    @GetMapping("stats")
+    public Map<String, Long> getStoreStats(
+            @RequestParam Long storeId) {
+
+        return service.getStoreStats(storeId);
     }
 }

@@ -14,6 +14,7 @@ public interface OrderRepository extends JpaRepository<Order, Long> {
 
     Optional<Order> findByIdAndIsActiveTrue(Long id);
 
+
     @Query("""
             SELECT o
             FROM Order o
@@ -21,6 +22,17 @@ public interface OrderRepository extends JpaRepository<Order, Long> {
             AND o.isActive = true
             """)
     List<Order> getOrdersByCustomer(
+            @Param("customerId") Long customerId
+    );
+
+
+    @Query("""
+            SELECT COALESCE(SUM(o.totalAmount), 0)
+            FROM Order o
+            WHERE o.customer.id = :customerId
+            AND o.isActive = true
+            """)
+    Double getTotalSpentByCustomer(
             @Param("customerId") Long customerId
     );
 }

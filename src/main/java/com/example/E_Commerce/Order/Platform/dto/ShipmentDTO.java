@@ -1,6 +1,8 @@
 package com.example.E_Commerce.Order.Platform.dto;
 
 import com.example.E_Commerce.Order.Platform.entities.Shipment;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.PastOrPresent;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -17,9 +19,16 @@ import java.util.stream.Collectors;
 public class ShipmentDTO {
 
     private Long id;
+
+    @NotBlank(message = "Tracking number is required")
     private String trackingNumber;
+
+    @NotBlank(message = "Shipment status is required")
     private String status;
+
+    @PastOrPresent(message = "Shipped date cannot be in the future")
     private Date shippedDate;
+
 
     public static ShipmentDTO convertToDTO(Shipment shipment) {
 
@@ -30,6 +39,8 @@ public class ShipmentDTO {
                 .shippedDate(shipment.getShippedDate())
                 .build();
     }
+
+
     public static List<ShipmentDTO> convertToDTO(List<Shipment> shipments) {
 
         return shipments.stream()

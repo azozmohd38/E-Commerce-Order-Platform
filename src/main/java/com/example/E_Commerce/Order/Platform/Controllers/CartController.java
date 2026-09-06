@@ -1,9 +1,12 @@
 package com.example.E_Commerce.Order.Platform.Controllers;
 
+import com.example.E_Commerce.Order.Platform.dto.CartDTO;
 import com.example.E_Commerce.Order.Platform.dto.CartItemDTO;
 import com.example.E_Commerce.Order.Platform.service.CartService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("cart")
@@ -12,21 +15,28 @@ public class CartController {
 
     private final CartService service;
 
+
     @PostMapping("add")
     public CartDTO create(@RequestBody CartDTO d) {
 
         return service.create(d);
     }
+
+
     @GetMapping("getAll")
     public List<CartDTO> getAll() {
 
         return service.getAll();
     }
+
+
     @GetMapping("getById")
     public CartDTO getById(@RequestParam Long id) {
 
         return service.getById(id);
     }
+
+
     @PutMapping("update")
     public CartDTO update(
             @RequestParam Long id,
@@ -34,11 +44,15 @@ public class CartController {
 
         return service.update(id, d);
     }
+
+
     @DeleteMapping("delete")
     public void delete(@RequestParam Long id) {
 
         service.delete(id);
     }
+
+
     @PostMapping("addProduct")
     public CartItemDTO addProductToCart(
             @RequestParam Long cartId,
@@ -51,12 +65,16 @@ public class CartController {
                 quantity
         );
     }
+
+
     @DeleteMapping("removeItem")
     public void removeItemFromCart(
             @RequestParam Long cartItemId) {
 
         service.removeItemFromCart(cartItemId);
     }
+
+
     @PutMapping("updateQuantity")
     public CartItemDTO updateItemQuantity(
             @RequestParam Long cartItemId,
@@ -67,6 +85,4 @@ public class CartController {
                 quantity
         );
     }
-
-
 }

@@ -14,20 +14,27 @@ public class ProductController {
 
     private final ProductService service;
 
+
     @PostMapping("add")
     public ProductDTO create(@RequestBody ProductDTO d) {
+
         return service.create(d);
     }
 
+
     @GetMapping("getAll")
     public List<ProductDTO> getAll() {
+
         return service.getAll();
     }
 
+
     @GetMapping("getById")
     public ProductDTO getById(@RequestParam Long id) {
+
         return service.getById(id);
     }
+
 
     @PutMapping("update")
     public ProductDTO update(
@@ -37,10 +44,13 @@ public class ProductController {
         return service.update(id, d);
     }
 
+
     @DeleteMapping("delete")
     public void delete(@RequestParam Long id) {
+
         service.delete(id);
     }
+
 
     @GetMapping("getByCategory")
     public List<ProductDTO> getActiveProductsByCategory(
@@ -49,6 +59,7 @@ public class ProductController {
         return service.getActiveProductsByCategory(categoryId);
     }
 
+
     @GetMapping("getBelowPrice")
     public List<ProductDTO> getProductsBelowPrice(
             @RequestParam Double price) {
@@ -56,10 +67,18 @@ public class ProductController {
         return service.getProductsBelowPrice(price);
     }
 
+
     @GetMapping("getLowStock")
     public List<ProductDTO> getLowStockProducts(
             @RequestParam Integer threshold) {
 
         return service.getLowStockProducts(threshold);
+    }
+
+
+    @GetMapping("bestSelling")
+    public ProductDTO getBestSellingProduct() {
+
+        return service.getBestSellingProduct();
     }
 }
