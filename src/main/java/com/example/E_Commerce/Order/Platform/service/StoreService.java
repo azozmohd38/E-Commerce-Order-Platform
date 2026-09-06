@@ -35,5 +35,11 @@ public class StoreService implements CrudService<StoreDTO> {
     public StoreDTO getById(Long id) {
         return StoreDTO.convertToDTO(find(id));
     }
+    public StoreDTO update(Long id, StoreDTO d) {
+        Store e = find(id);
+        copy(d, e);
+        return StoreDTO.convertToDTO(repo.save(e));
+
+    }
 
 
