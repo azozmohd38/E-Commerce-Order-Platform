@@ -27,5 +27,8 @@ public class StoreService implements CrudService<StoreDTO> {
         copy(d, e);
         return StoreDTO.convertToDTO(repo.save(e));
     }
+    public List<StoreDTO> getAll() {
+        return StoreDTO.convertToDTO(repo.findAllByIsActiveTrue());
+    }
 
 
