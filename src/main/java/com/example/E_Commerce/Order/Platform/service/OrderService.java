@@ -64,6 +64,14 @@ public class OrderService implements CrudService<OrderDTO> {
 
         repo.save(e);
     }
+    Order find(Long id) {
+
+        return EntityHelper.active(
+                repo,
+                id,
+                "Order"
+        );
+    }
 
 
 
