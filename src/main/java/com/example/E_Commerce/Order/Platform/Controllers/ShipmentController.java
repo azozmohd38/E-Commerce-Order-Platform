@@ -25,6 +25,13 @@ public class ShipmentController {
 
         return service.getById(id);
     }
+    @PutMapping("update")
+    public ShipmentDTO update(
+            @RequestParam Long id,
+            @RequestBody ShipmentDTO d) {
+
+        return service.update(id, d);
+    }
 
 }
 
