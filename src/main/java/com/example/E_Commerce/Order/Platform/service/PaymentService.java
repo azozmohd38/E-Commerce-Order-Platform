@@ -3,6 +3,7 @@ package com.example.E_Commerce.Order.Platform.service;
 import com.example.E_Commerce.Order.Platform.dto.PaymentDTO;
 import com.example.E_Commerce.Order.Platform.entities.Order;
 import com.example.E_Commerce.Order.Platform.entities.Payment;
+import com.example.E_Commerce.Order.Platform.entities.Shipment;
 import com.example.E_Commerce.Order.Platform.repositories.OrderRepository;
 import com.example.E_Commerce.Order.Platform.repositories.PaymentRepository;
 import com.example.E_Commerce.Order.Platform.repositories.ShipmentRepository;
@@ -10,10 +11,9 @@ import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
-
-import static java.nio.file.Files.find;
-import static java.util.Collections.copy;
+import java.util.UUID;
 
 @Service
 @RequiredArgsConstructor
@@ -65,6 +65,7 @@ public class PaymentService implements CrudService<PaymentDTO> {
                 repo.save(e)
         );
     }
+
     public void delete(Long id) {
 
         Payment e = find(id);
@@ -73,6 +74,7 @@ public class PaymentService implements CrudService<PaymentDTO> {
 
         repo.save(e);
     }
+
     Payment find(Long id) {
 
         return EntityHelper.active(
@@ -81,12 +83,14 @@ public class PaymentService implements CrudService<PaymentDTO> {
                 "Payment"
         );
     }
+
     private void copy(PaymentDTO d, Payment e) {
         e.setAmount(d.getAmount());
         e.setMethod(d.getMethod());
         e.setStatus(d.getStatus());
         e.setPaidDate(d.getPaidDate());
     }
+
     public PaymentDTO payOrder(
             Long orderId,
             String method) {
@@ -97,7 +101,52 @@ public class PaymentService implements CrudService<PaymentDTO> {
                 orderId,
                 "Order"
         );
+        if (order.getPayment() != null &&
+                Boolean.TRUE.equals(order.getPayment().getIsActive())) {
+
+            throw new RuntimeException(
+                    "Order is already paid"
+            );
+
+
+        }
+        Payment payment = new Payment();
+        payment.setOrder(order);
+        payment.setAmount(
+                order.getTotalAmount()
+        );
+
+        payment.setMethod(method);
+        payment.setStatus("PAID");
+        payment.setPaidDate(new Date());
+        payment.setIsActive(true);
+        payment.setCreatedDate(new Date());
+
+        payment = repo.save(payment);
+
+        order.setPayment(payment);
+        order.setStatus("PAID");
+        order.setUpdatedDate(new Date());
+        orderRepository.save(order);
+
+
+        Shipment shipment = new Shipment();
+        shipment.setOrder(order);
+        shipment.setTrackingNumber(
+                UUID.randomUUID().toString()
+        );
+
+        shipment.setStatus("CREATED");
+        shipment.setIsActive(true);
+        shipment.setCreatedDate(new Date());
+        shipment = shipmentRepository.save(shipment);
+
+        order.setShipment(shipment);
+        orderRepository.save(order);
+
+        return PaymentDTO.convertToDTO(payment);
     }
+}
 
 
 
