@@ -10,14 +10,22 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.*;
 
 
-// Git Commit: Create StoreService
+
 @Service
 @RequiredArgsConstructor
 @Transactional
 public class StoreService implements CrudService<StoreDTO> {
 
 
+
     private final StoreRepository repo;
-}
+
+
+
+    public StoreDTO create(StoreDTO d) {
+        Store e = new Store();
+        copy(d, e);
+        return StoreDTO.convertToDTO(repo.save(e));
+    }
 
 
