@@ -37,4 +37,7 @@ public class ProductService implements CrudService<ProductDTO> {
         e.setIsActive(false);
         repo.save(e);
     }
+    Product find(Long id) {
+        return EntityHelper.active(repo, id, "Product");
+    }
 }
