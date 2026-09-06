@@ -62,5 +62,13 @@ public class ShipmentService implements CrudService<ShipmentDTO> {
 
         repo.save(e);
     }
+    Shipment find(Long id) {
+
+        return EntityHelper.active(
+                repo,
+                id,
+                "Shipment"
+        );
+    }
 
 }
