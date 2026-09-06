@@ -2,6 +2,8 @@ package com.example.E_Commerce.Order.Platform.entities;
 
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToOne;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -15,6 +17,9 @@ public class OrderItem extends BaseClass{
     private Integer quantity;
     private Double unitPrice;
 
+
+@ManyToOne
+    private Order order;
 
 
 
