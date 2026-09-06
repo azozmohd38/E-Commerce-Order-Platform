@@ -11,5 +11,10 @@ import lombok.Setter;
 
 public class Customer extends BaseClass {
 
+    private String name;
+    private String email;
+    private String phoneNumber;
+    private String gender;
+
 
 }
