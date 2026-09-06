@@ -30,6 +30,10 @@ public class Customer extends BaseClass {
     private List<Review> reviews;
 
 
+@OneToMany(mappedBy = "customer", cascade = CascadeType.ALL)
+    private List<Address> addresses;
+
+
 
 
 
