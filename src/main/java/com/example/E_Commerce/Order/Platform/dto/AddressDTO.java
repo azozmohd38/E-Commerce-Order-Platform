@@ -6,6 +6,9 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 @Data
 @Builder
 @NoArgsConstructor
@@ -27,4 +30,11 @@ public class AddressDTO {
                 .type(address.getType())
                 .build();
     }
+    public static List<AddressDTO> convertToDTO(List<Address> addresses) {
+
+        return addresses.stream()
+                .map(AddressDTO::convertToDTO)
+                .collect(Collectors.toList());
+    }
+
 }
