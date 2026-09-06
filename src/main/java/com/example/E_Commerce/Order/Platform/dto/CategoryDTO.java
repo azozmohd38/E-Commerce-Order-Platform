@@ -5,6 +5,9 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 
 @Data
 @Builder
@@ -22,6 +25,12 @@ public class CategoryDTO {
                 .name(category.getName())
                 .description(category.getDescription())
                 .build();
+    }
+    public static List<CategoryDTO> convertToDTO(List<Category> categories) {
+
+        return categories.stream()
+                .map(CategoryDTO::convertToDTO)
+                .collect(Collectors.toList());
     }
 }
 
