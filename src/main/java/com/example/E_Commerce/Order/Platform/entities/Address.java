@@ -21,4 +21,7 @@ public class Address extends BaseClass {
 @ManyToOne
     private Customer customer;
 
+    public Address() {
+
+    }
 }
