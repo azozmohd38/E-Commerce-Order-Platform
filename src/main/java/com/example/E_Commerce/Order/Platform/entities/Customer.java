@@ -33,9 +33,7 @@ public class Customer extends BaseClass {
 @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL)
     private List<Address> addresses;
 
+    public Customer() {
 
-
-
-
-
+    }
 }
