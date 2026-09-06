@@ -21,5 +21,7 @@ public class Review extends BaseClass{
 @ManyToOne
 private Customer customer;
 
+    public Review() {
 
+    }
 }
