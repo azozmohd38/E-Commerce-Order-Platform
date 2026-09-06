@@ -127,6 +127,13 @@ public class CartService implements CrudService<CartDTO> {
                 cartItemRepository.save(item)
         );
     }
+    public void removeItemFromCart(Long cartItemId) {
+
+        CartItem item = EntityHelper.active(
+                cartItemRepository,
+                cartItemId,
+                "CartItem"
+        );
 }
 
 
