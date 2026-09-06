@@ -5,12 +5,13 @@ import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.OneToMany;
 import jdk.jfr.Category;
+import lombok.Getter;
 import lombok.Setter;
 
 import java.util.List;
 
 @Entity
-@Setter
+@Getter
 @Setter
 
 public class Store extends BaseClass {
@@ -29,12 +30,9 @@ private List<Product> products;
 @OneToMany(mappedBy = "store", cascade = CascadeType.ALL)
     private List<Customer> customers;
 
+    public Store(){
 
-
-
-
-
-
+    }
 
 
 }
