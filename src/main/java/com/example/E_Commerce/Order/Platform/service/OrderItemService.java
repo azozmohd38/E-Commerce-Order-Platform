@@ -71,4 +71,11 @@ public class OrderItemService implements CrudService<OrderItemDTO> {
                 "OrderItem"
         );
     }
+    private void copy(OrderItemDTO d, OrderItem e) {
+
+        e.setQuantity(d.getQuantity());
+
+        e.setUnitPrice(d.getUnitPrice());
+    }
+
 }
