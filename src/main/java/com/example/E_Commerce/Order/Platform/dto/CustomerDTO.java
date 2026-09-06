@@ -6,6 +6,9 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 @Data
 @Builder
 @NoArgsConstructor
@@ -27,6 +30,12 @@ public class CustomerDTO {
                 .phoneNumber(customer.getPhoneNumber())
                 .gender(customer.getGender())
                 .build();
+    }
+    public static List<CustomerDTO> convertToDTO(List<Customer> customers) {
+
+        return customers.stream()
+                .map(CustomerDTO::convertToDTO)
+                .collect(Collectors.toList());
     }
 
 
