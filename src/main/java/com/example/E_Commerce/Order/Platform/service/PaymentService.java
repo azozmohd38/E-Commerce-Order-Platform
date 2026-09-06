@@ -1,6 +1,7 @@
 package com.example.E_Commerce.Order.Platform.service;
 
 import com.example.E_Commerce.Order.Platform.dto.PaymentDTO;
+import com.example.E_Commerce.Order.Platform.entities.Order;
 import com.example.E_Commerce.Order.Platform.entities.Payment;
 import com.example.E_Commerce.Order.Platform.repositories.OrderRepository;
 import com.example.E_Commerce.Order.Platform.repositories.PaymentRepository;
@@ -90,7 +91,13 @@ public class PaymentService implements CrudService<PaymentDTO> {
             Long orderId,
             String method) {
 
-}
+
+        Order order = EntityHelper.active(
+                orderRepository,
+                orderId,
+                "Order"
+        );
+    }
 
 
 
