@@ -1,5 +1,6 @@
 package com.example.E_Commerce.Order.Platform.service;
 
+import com.example.E_Commerce.Order.Platform.entities.CartItem;
 import com.example.E_Commerce.Order.Platform.repositories.CartItemRepository;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
@@ -55,6 +56,13 @@ public class CartItemService implements CrudService<CartItemDTO> {
                 repo.save(e)
         );
     }
+    CartItem find(Long id) {
 
+        return EntityHelper.active(
+                repo,
+                id,
+                "CartItem"
+        );
+    }
 }
 
