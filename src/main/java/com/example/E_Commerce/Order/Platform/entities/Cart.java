@@ -21,5 +21,7 @@ public class Cart extends BaseClass {
 @OneToOne(mappedBy = "cart", cascade = CascadeType.ALL)
     private List<CartItem> cartItems;
 
+    public Cart() {
 
+    }
 }
