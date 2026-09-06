@@ -41,5 +41,10 @@ public class StoreService implements CrudService<StoreDTO> {
         return StoreDTO.convertToDTO(repo.save(e));
 
     }
+    public void delete(Long id) {
+        Store e = find(id);
+        e.setIsActive(false);
+        repo.save(e);
+    }
 
 
