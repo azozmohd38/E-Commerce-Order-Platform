@@ -26,6 +26,13 @@ public class ProductController {
 
         return service.getById(id);
     }
+    @PutMapping("update")
+    public ProductDTO update(
+            @RequestParam Long id,
+            @RequestBody ProductDTO d) {
+
+        return service.update(id, d);
+    }
 
 
 
