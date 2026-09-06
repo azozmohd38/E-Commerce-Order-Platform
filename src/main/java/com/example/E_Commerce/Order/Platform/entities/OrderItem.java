@@ -21,6 +21,10 @@ public class OrderItem extends BaseClass{
 @ManyToOne
     private Order order;
 
+@ManyToOne
+    private Product product;
+
+
 
 
 }
