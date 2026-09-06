@@ -26,6 +26,14 @@ public class AddressController {
 
         return service.getById(id);
     }
+    @PutMapping("update")
+    public AddressDTO update(
+            @RequestParam Long id,
+            @RequestBody AddressDTO d) {
+
+        return service.update(id, d);
+    }
+
 
 
 }
