@@ -1,5 +1,6 @@
 package com.example.E_Commerce.Order.Platform.service;
 
+import com.example.E_Commerce.Order.Platform.entities.Customer;
 import com.example.E_Commerce.Order.Platform.repositories.CustomerRepository;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
@@ -35,6 +36,16 @@ public class CustomerService implements CrudService<CustomerDTO> {
 
         return CustomerDTO.convertToDTO(
                 find(id)
+        );
+    }
+    ublic CustomerDTO update(Long id, CustomerDTO d) {
+
+        Customer e = find(id);
+
+        copy(d, e);
+
+        return CustomerDTO.convertToDTO(
+                repo.save(e)
         );
     }
 
