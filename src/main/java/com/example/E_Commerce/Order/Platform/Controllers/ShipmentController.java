@@ -20,6 +20,11 @@ public class ShipmentController {
 
         return service.getAll();
     }
+    @GetMapping("getById")
+    public ShipmentDTO getById(@RequestParam Long id) {
+
+        return service.getById(id);
+    }
 
 }
 
