@@ -13,4 +13,12 @@ public class StoreDTO {
     private String name;
     private String location;
 
+    public static StoreDTO convertToDTO(Store store) {
+
+        return StoreDTO.builder()
+                .id(store.getId())
+                .name(store.getName())
+                .location(store.getLocation())
+                .build();
+    }
 }
