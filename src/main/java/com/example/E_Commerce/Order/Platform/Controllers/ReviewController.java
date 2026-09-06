@@ -21,6 +21,11 @@ public class ReviewController {
 
         return service.getAll();
     }
+    @GetMapping("getById")
+    public ReviewDTO getById(@RequestParam Long id) {
+
+        return service.getById(id);
+    }
 
 
 
