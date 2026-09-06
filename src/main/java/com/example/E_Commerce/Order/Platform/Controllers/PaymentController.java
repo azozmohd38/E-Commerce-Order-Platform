@@ -1,5 +1,6 @@
 package com.example.E_Commerce.Order.Platform.Controllers;
 
+import com.example.E_Commerce.Order.Platform.dto.PaymentDTO;
 import com.example.E_Commerce.Order.Platform.service.PaymentService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -38,6 +39,16 @@ public class PaymentController {
     public void delete(@RequestParam Long id) {
 
         service.delete(id);
+    }
+    @PostMapping("payOrder")
+    public PaymentDTO payOrder(
+            @RequestParam Long orderId,
+            @RequestParam String method) {
+
+        return service.payOrder(
+                orderId,
+                method
+        );
     }
 }
 
