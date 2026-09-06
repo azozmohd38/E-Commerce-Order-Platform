@@ -10,13 +10,17 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.*;
 
 
-
+// Git Commit: Create CategoryService
 @Service
 @RequiredArgsConstructor
 @Transactional
 public class CategoryService implements CrudService<CategoryDTO> {
 
 
-}
+
+    private final CategoryRepository repo;
+
+
+
 
 
