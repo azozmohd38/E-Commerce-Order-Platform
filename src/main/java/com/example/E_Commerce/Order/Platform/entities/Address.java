@@ -2,7 +2,6 @@ package com.example.E_Commerce.Order.Platform.entities;
 
 
 import jakarta.persistence.Entity;
-import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 import lombok.Getter;
 import lombok.Setter;
