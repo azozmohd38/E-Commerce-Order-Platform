@@ -21,7 +21,9 @@ public class Product extends BaseClass {
     @OneToMany
     private Category category;
 
+public Product(){
 
+}
 
 
 }
