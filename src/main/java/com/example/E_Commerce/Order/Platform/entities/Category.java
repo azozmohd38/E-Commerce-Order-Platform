@@ -26,7 +26,9 @@ public class Category extends BaseClass {
 @OneToMany(mappedBy = "category", cascade = CascadeType.ALL)
     private List<Product> products;
 
+public Category(){
 
+}
 
 
 }
