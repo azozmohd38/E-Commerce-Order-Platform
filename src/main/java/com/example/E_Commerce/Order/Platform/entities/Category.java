@@ -12,6 +12,9 @@ import lombok.Setter;
 
 public class Category extends BaseClass {
 
+     private String name;
+     private String description;
+
 
 
 
