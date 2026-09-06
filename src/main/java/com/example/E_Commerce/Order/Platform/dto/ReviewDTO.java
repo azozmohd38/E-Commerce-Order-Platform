@@ -1,5 +1,6 @@
 package com.example.E_Commerce.Order.Platform.dto;
 
+import com.example.E_Commerce.Order.Platform.entities.Review;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -17,6 +18,17 @@ public class ReviewDTO {
     private Integer rating;
     private String comment;
     private Date reviewDate;
+
+    public static ReviewDTO convertToDTO(Review review) {
+
+        return ReviewDTO.builder()
+                .id(review.getId())
+                .rating(review.getRating())
+                .comment(review.getComment())
+                .reviewDate(review.getReviewDate())
+                .build();
+    }
+
 
 }
 
