@@ -9,6 +9,9 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.*;
 
+import static java.nio.file.Files.find;
+import static java.util.Collections.copy;
+
 
 // Git Commit: Create CategoryService
 @Service
@@ -27,6 +30,9 @@ public class CategoryService implements CrudService<CategoryDTO> {
     }
     public List<CategoryDTO> getAll() {
         return CategoryDTO.convertToDTO(repo.findAllByIsActiveTrue());
+    }
+    public CategoryDTO getById(Long id) {
+        return CategoryDTO.convertToDTO(find(id));
     }
 
 
