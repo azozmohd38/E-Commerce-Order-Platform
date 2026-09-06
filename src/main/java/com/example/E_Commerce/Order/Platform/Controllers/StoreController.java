@@ -21,4 +21,9 @@ public class CategoryController {
 
         return service.getAll();
     }
+    @GetMapping("getById")
+    public CategoryDTO getById(@RequestParam Long id) {
+
+        return service.getById(id);
+    }
 }
