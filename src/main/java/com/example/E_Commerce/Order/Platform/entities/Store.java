@@ -10,6 +10,8 @@ import lombok.Setter;
 
 public class Store extends BaseClass {
 
+      private String name;
+      private String location;
 
 
 }
