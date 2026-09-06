@@ -1,8 +1,11 @@
 package com.example.E_Commerce.Order.Platform.Controllers;
 
+import com.example.E_Commerce.Order.Platform.dto.OrderDTO;
 import com.example.E_Commerce.Order.Platform.service.OrderService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("order")
@@ -37,6 +40,11 @@ public class OrderController {
     public void delete(@RequestParam Long id) {
 
         service.delete(id);
+    }
+    @PostMapping("placeOrder")
+    public OrderDTO placeOrder(@RequestParam Long cartId) {
+
+        return service.placeOrder(cartId);
     }
 
 
