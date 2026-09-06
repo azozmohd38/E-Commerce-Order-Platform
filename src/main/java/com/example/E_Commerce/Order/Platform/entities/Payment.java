@@ -21,7 +21,8 @@ public class Payment extends BaseClass{
 @OneToOne
     private Order order;
 
+    public Payment() {
 
-
+    }
 
 }
