@@ -1,6 +1,8 @@
 package com.example.E_Commerce.Order.Platform.service;
 
+import com.example.E_Commerce.Order.Platform.dto.CartItemDTO;
 import com.example.E_Commerce.Order.Platform.entities.Cart;
+import com.example.E_Commerce.Order.Platform.entities.CartItem;
 import com.example.E_Commerce.Order.Platform.entities.Product;
 import com.example.E_Commerce.Order.Platform.repositories.CartItemRepository;
 import com.example.E_Commerce.Order.Platform.repositories.CartRepository;
@@ -8,6 +10,8 @@ import com.example.E_Commerce.Order.Platform.repositories.ProductRepository;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+
+import java.util.Optional;
 
 
 @Service
@@ -83,9 +87,50 @@ public class CartService implements CrudService<CartDTO> {
                 productId,
                 "Product"
         );
+        if (quantity > product.getStockQuantity()) {
+            throw new RuntimeException(
+                    "Requested quantity exceeds available stock"
+            );
+        }
+        Optional<CartItem> existingItem =
+                cartItemRepository
+                        .findByCartAndProductAndIsActiveTrue(
+                                cart,
+                                product
+                        );
+        if (existingItem.isPresent()) {
+            CartItem item = existingItem.get();
+            Integer newQuantity =
+                    item.getQuantity() + quantity;
+
+            if (newQuantity > product.getStockQuantity()) {
+
+                throw new RuntimeException(
+                        "Requested quantity exceeds available stock"
+                );
+            }
 
 
+            item.setQuantity(newQuantity);
+            return CartItemDTO.convertToDTO(
+                    cartItemRepository.save(item)
+            );
+        }
+
+
+        CartItem item = new CartItem();
+        item.setCart(cart);
+        item.setProduct(product);
+        item.setQuantity(quantity);
+        item.setIsActive(true);
+        return CartItemDTO.convertToDTO(
+                cartItemRepository.save(item)
+        );
+    }
 }
+
+
+
 
 
 

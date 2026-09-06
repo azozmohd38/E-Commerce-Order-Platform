@@ -10,5 +10,4 @@ public interface CartItemRepository extends JpaRepository<CartItem, Long> {
 
     List<CartItem> findAllByIsActiveTrue();
     Optional<CartItem> findByIdAndIsActiveTrue(Long id);
-
 }
