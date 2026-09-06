@@ -23,6 +23,14 @@ public class Store extends BaseClass {
 private List<Product> products;
 
 
+@OneToMany(mappedBy = "store", cascade = CascadeType.ALL)
+    private List<Category> categories;
+
+
+
+
+
+
 
 
 
