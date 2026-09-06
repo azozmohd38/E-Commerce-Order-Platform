@@ -63,4 +63,12 @@ public class AddressService implements CrudService<AddressDTO> {
 
         repo.save(e);
     }
+    Address find(Long id) {
+
+        return EntityHelper.active(
+                repo,
+                id,
+                "Address"
+        );
+    }
 }
