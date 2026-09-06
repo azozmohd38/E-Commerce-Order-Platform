@@ -38,6 +38,18 @@ public class CartController {
 
         service.delete(id);
     }
+    @PostMapping("addProduct")
+    public CartItemDTO addProductToCart(
+            @RequestParam Long cartId,
+            @RequestParam Long productId,
+            @RequestParam Integer quantity) {
+
+        return service.addProductToCart(
+                cartId,
+                productId,
+                quantity
+        );
+    }
 
 
 
