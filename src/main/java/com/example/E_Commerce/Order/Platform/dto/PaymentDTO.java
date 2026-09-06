@@ -8,6 +8,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.Date;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Data
 @Builder
@@ -30,6 +32,12 @@ public class PaymentDTO {
                 .status(payment.getStatus())
                 .paidDate(payment.getPaidDate())
                 .build();
+    }
+    public static List<PaymentDTO> convertToDTO(List<Payment> payments) {
+
+        return payments.stream()
+                .map(PaymentDTO::convertToDTO)
+                .collect(Collectors.toList());
     }
 }
 
