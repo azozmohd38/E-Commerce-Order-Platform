@@ -1,10 +1,15 @@
 package com.example.E_Commerce.Order.Platform.service;
 
+import com.example.E_Commerce.Order.Platform.dto.PaymentDTO;
 import com.example.E_Commerce.Order.Platform.entities.Payment;
+import com.example.E_Commerce.Order.Platform.repositories.OrderRepository;
 import com.example.E_Commerce.Order.Platform.repositories.PaymentRepository;
+import com.example.E_Commerce.Order.Platform.repositories.ShipmentRepository;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 import static java.nio.file.Files.find;
 import static java.util.Collections.copy;
@@ -15,6 +20,10 @@ import static java.util.Collections.copy;
 public class PaymentService implements CrudService<PaymentDTO> {
 
     private final PaymentRepository repo;
+    private final OrderRepository orderRepository;
+
+    private final ShipmentRepository shipmentRepository;
+
     public PaymentDTO create(PaymentDTO d) {
 
         Payment e = new Payment();
@@ -77,6 +86,10 @@ public class PaymentService implements CrudService<PaymentDTO> {
         e.setStatus(d.getStatus());
         e.setPaidDate(d.getPaidDate());
     }
+    public PaymentDTO payOrder(
+            Long orderId,
+            String method) {
+
 }
 
 
