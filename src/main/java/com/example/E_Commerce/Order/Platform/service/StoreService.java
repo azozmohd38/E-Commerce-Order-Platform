@@ -37,6 +37,19 @@ public class StoreService implements CrudService<StoreDTO> {
                 find(id)
         );
     }
+    @Override
+    public StoreDTO update(Long id, StoreDTO d) {
+
+        Store e = find(id);
+
+        copy(d, e);
+
+        return StoreDTO.convertToDTO(
+                repo.save(e)
+        );
+    }
+
+
 
 
 
