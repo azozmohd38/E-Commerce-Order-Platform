@@ -39,6 +39,20 @@ public class ReviewController {
 
         service.delete(id);
     }
+    @PostMapping("submitReview")
+    public ReviewDTO submitReview(
+            @RequestParam Long customerId,
+            @RequestParam Long productId,
+            @RequestParam Integer rating,
+            @RequestParam String comment) {
+
+        return service.submitReview(
+                customerId,
+                productId,
+                rating,
+                comment
+        );
+    }
 
 
 }
