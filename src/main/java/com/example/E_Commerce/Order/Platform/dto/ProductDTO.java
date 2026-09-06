@@ -6,6 +6,9 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 @Data
 @Builder
 @NoArgsConstructor
@@ -28,5 +31,12 @@ public class ProductDTO {
                 .sku(product.getSku())
                 .build();
     }
+    public static List<ProductDTO> convertToDTO(List<Product> products) {
+
+        return products.stream()
+                .map(ProductDTO::convertToDTO)
+                .collect(Collectors.toList());
+    }
+
 }
 
