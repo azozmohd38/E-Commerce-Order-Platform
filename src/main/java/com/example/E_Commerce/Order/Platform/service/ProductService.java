@@ -16,10 +16,9 @@ import java.util.List;
 public class ProductService implements CrudService<ProductDTO> {
 
     private final ProductRepository repo;
-
     private final OrderItemRepository orderItemRepository;
 
-
+    @Override
     public ProductDTO create(ProductDTO d) {
 
         Product e = new Product();
@@ -33,7 +32,7 @@ public class ProductService implements CrudService<ProductDTO> {
         );
     }
 
-
+    @Override
     public List<ProductDTO> getAll() {
 
         return ProductDTO.convertToDTO(
@@ -41,7 +40,7 @@ public class ProductService implements CrudService<ProductDTO> {
         );
     }
 
-
+    @Override
     public ProductDTO getById(Long id) {
 
         return ProductDTO.convertToDTO(
@@ -49,7 +48,7 @@ public class ProductService implements CrudService<ProductDTO> {
         );
     }
 
-
+    @Override
     public ProductDTO update(Long id, ProductDTO d) {
 
         Product e = find(id);
@@ -61,7 +60,7 @@ public class ProductService implements CrudService<ProductDTO> {
         );
     }
 
-
+    @Override
     public void delete(Long id) {
 
         Product e = find(id);
@@ -71,7 +70,6 @@ public class ProductService implements CrudService<ProductDTO> {
         repo.save(e);
     }
 
-
     Product find(Long id) {
 
         return EntityHelper.active(
@@ -80,7 +78,6 @@ public class ProductService implements CrudService<ProductDTO> {
                 "Product"
         );
     }
-
 
     private void copy(ProductDTO d, Product e) {
 
@@ -93,14 +90,12 @@ public class ProductService implements CrudService<ProductDTO> {
         e.setSku(d.getSku());
     }
 
-
-    public List<ProductDTO> getActiveProductsByCategory(Long categoryId) {
+    public List<ProductDTO> getProductsByCategory(Long categoryId) {
 
         return ProductDTO.convertToDTO(
                 repo.getActiveProductsByCategory(categoryId)
         );
     }
-
 
     public List<ProductDTO> getProductsBelowPrice(Double price) {
 
@@ -109,14 +104,12 @@ public class ProductService implements CrudService<ProductDTO> {
         );
     }
 
-
     public List<ProductDTO> getLowStockProducts(Integer threshold) {
 
         return ProductDTO.convertToDTO(
                 repo.getLowStockProducts(threshold)
         );
     }
-
 
     public ProductDTO getBestSellingProduct() {
 

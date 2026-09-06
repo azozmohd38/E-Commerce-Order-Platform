@@ -1,6 +1,7 @@
 package com.example.E_Commerce.Order.Platform.service;
 
 import com.example.E_Commerce.Order.Platform.entities.BaseClass;
+import com.example.E_Commerce.Order.Platform.exception.ResourceNotFoundException;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public class EntityHelper {
@@ -12,15 +13,15 @@ public class EntityHelper {
 
         T entity = repo.findById(id)
                 .orElseThrow(() ->
-                        new RuntimeException(
+                        new ResourceNotFoundException(
                                 entityName + " not found"
                         )
                 );
 
         if (!Boolean.TRUE.equals(entity.getIsActive())) {
 
-            throw new RuntimeException(
-                    entityName + " is inactive"
+            throw new ResourceNotFoundException(
+                    entityName + " not found"
             );
         }
 

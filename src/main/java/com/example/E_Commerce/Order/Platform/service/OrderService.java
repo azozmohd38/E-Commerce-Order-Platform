@@ -1,11 +1,7 @@
 package com.example.E_Commerce.Order.Platform.service;
 
 import com.example.E_Commerce.Order.Platform.dto.OrderDTO;
-import com.example.E_Commerce.Order.Platform.entities.Cart;
-import com.example.E_Commerce.Order.Platform.entities.CartItem;
-import com.example.E_Commerce.Order.Platform.entities.Order;
-import com.example.E_Commerce.Order.Platform.entities.OrderItem;
-import com.example.E_Commerce.Order.Platform.entities.Product;
+import com.example.E_Commerce.Order.Platform.entities.*;
 import com.example.E_Commerce.Order.Platform.repositories.CartItemRepository;
 import com.example.E_Commerce.Order.Platform.repositories.CartRepository;
 import com.example.E_Commerce.Order.Platform.repositories.OrderItemRepository;

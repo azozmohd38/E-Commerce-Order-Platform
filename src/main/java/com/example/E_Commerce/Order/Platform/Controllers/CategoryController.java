@@ -2,6 +2,7 @@ package com.example.E_Commerce.Order.Platform.Controllers;
 
 import com.example.E_Commerce.Order.Platform.dto.CategoryDTO;
 import com.example.E_Commerce.Order.Platform.service.CategoryService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,7 +16,7 @@ public class CategoryController {
     private final CategoryService service;
 
     @PostMapping("add")
-    public CategoryDTO create(@RequestBody CategoryDTO d) {
+    public CategoryDTO create(@Valid @RequestBody CategoryDTO d) {
         return service.create(d);
     }
 
@@ -32,8 +33,7 @@ public class CategoryController {
     @PutMapping("update")
     public CategoryDTO update(
             @RequestParam Long id,
-            @RequestBody CategoryDTO d) {
-
+            @Valid @RequestBody CategoryDTO d) {
         return service.update(id, d);
     }
 

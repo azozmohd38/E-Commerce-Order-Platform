@@ -24,8 +24,8 @@ public class ProductDTO {
     @NotBlank(message = "Product name is required")
     private String name;
 
-    @NotNull(message = "Product price is required")
-    @Positive(message = "Product price must be greater than 0")
+    @NotNull(message = "Price is required")
+    @Positive(message = "Price must be positive")
     private Double price;
 
     @NotNull(message = "Stock quantity is required")
@@ -34,7 +34,6 @@ public class ProductDTO {
 
     @NotBlank(message = "SKU is required")
     private String sku;
-
 
     public static ProductDTO convertToDTO(Product product) {
 
@@ -46,7 +45,6 @@ public class ProductDTO {
                 .sku(product.getSku())
                 .build();
     }
-
 
     public static List<ProductDTO> convertToDTO(List<Product> products) {
 

@@ -3,26 +3,24 @@ package com.example.E_Commerce.Order.Platform.entities;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.MappedSuperclass;
 import lombok.Getter;
 import lombok.Setter;
 
 import java.util.Date;
 
+@MappedSuperclass
 @Getter
 @Setter
 public class BaseClass {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY )
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private Boolean isActive;
+
     private Date createdDate;
+
     private Date updatedDate;
-
-    public BaseClass(){
-
-
-
-    }
 }
