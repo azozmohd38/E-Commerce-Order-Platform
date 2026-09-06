@@ -9,5 +9,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class StoreDTO {
 
+    private Long id;
+    private String name;
+    private String location;
 
 }
