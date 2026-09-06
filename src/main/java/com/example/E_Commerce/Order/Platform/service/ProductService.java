@@ -6,6 +6,7 @@ import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import static java.nio.file.Files.find;
 import static java.util.Collections.copy;
 
 @Service
@@ -22,6 +23,9 @@ public class ProductService implements CrudService<ProductDTO> {
     }
     public List<ProductDTO> getAll() {
         return ProductDTO.convertToDTO(repo.findAllByIsActiveTrue());
+    }
+    public ProductDTO getById(Long id) {
+        return ProductDTO.convertToDTO(find(id));
     }
 
 }
