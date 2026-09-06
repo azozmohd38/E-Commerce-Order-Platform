@@ -21,6 +21,12 @@ public class ProductController {
 
         return service.getAll();
     }
+    @GetMapping("getById")
+    public ProductDTO getById(@RequestParam Long id) {
+
+        return service.getById(id);
+    }
+
 
 
 }
