@@ -9,6 +9,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.*;
 
+import static java.nio.file.Files.find;
+import static java.util.Collections.copy;
 
 
 @Service
@@ -29,6 +31,9 @@ public class StoreService implements CrudService<StoreDTO> {
     }
     public List<StoreDTO> getAll() {
         return StoreDTO.convertToDTO(repo.findAllByIsActiveTrue());
+    }
+    public StoreDTO getById(Long id) {
+        return StoreDTO.convertToDTO(find(id));
     }
 
 
