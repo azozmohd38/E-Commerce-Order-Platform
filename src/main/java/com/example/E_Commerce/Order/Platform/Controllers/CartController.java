@@ -50,6 +50,14 @@ public class CartController {
                 quantity
         );
     }
+    @DeleteMapping("removeItem")
+    public void removeItemFromCart(
+            @RequestParam Long cartItemId) {
+
+        service.removeItemFromCart(cartItemId);
+    }
+
+
 
 
 
