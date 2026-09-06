@@ -55,5 +55,13 @@ public class OrderItemService implements CrudService<OrderItemDTO> {
                 repo.save(e)
         );
     }
+    public void delete(Long id) {
+
+        OrderItem e = find(id);
+
+        e.setIsActive(false);
+
+        repo.save(e);
+    }
 
 }
