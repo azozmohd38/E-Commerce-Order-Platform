@@ -7,6 +7,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.Date;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Data
 @Builder
@@ -27,5 +29,11 @@ public class ShipmentDTO {
                 .status(shipment.getStatus())
                 .shippedDate(shipment.getShippedDate())
                 .build();
+    }
+    public static List<ShipmentDTO> convertToDTO(List<Shipment> shipments) {
+
+        return shipments.stream()
+                .map(ShipmentDTO::convertToDTO)
+                .collect(Collectors.toList());
     }
 }
