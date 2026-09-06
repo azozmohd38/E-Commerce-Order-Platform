@@ -26,5 +26,13 @@ public class PaymentController {
 
         return service.getById(id);
     }
+    // Git Commit: Add update Payment endpoint
+    @PutMapping("update")
+    public PaymentDTO update(
+            @RequestParam Long id,
+            @RequestBody PaymentDTO d) {
+
+        return service.update(id, d);
+    }
 }
 
