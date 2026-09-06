@@ -26,4 +26,11 @@ public class CategoryController {
 
         return service.getById(id);
     }
+    @PutMapping("update")
+    public CategoryDTO update(
+            @RequestParam Long id,
+            @RequestBody CategoryDTO d) {
+
+        return service.update(id, d);
+    }
 }
