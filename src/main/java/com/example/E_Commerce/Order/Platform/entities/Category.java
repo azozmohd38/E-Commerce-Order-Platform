@@ -2,6 +2,7 @@ package com.example.E_Commerce.Order.Platform.entities;
 
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.OneToMany;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -15,6 +16,9 @@ public class Category extends BaseClass {
      private String name;
      private String description;
 
+
+@OneToMany
+  private Store store;
 
 
 
