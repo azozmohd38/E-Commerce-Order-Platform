@@ -2,6 +2,7 @@ package com.example.E_Commerce.Order.Platform.entities;
 
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.ManyToOne;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -11,5 +12,7 @@ import lombok.Setter;
 
 public class Cart extends BaseClass {
 
+@ManyToOne
+    private Customer customer;
 
 }
