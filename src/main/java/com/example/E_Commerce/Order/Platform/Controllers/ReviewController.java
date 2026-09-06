@@ -34,7 +34,11 @@ public class ReviewController {
         return service.update(id, d);
     }
 
+    @DeleteMapping("delete")
+    public void delete(@RequestParam Long id) {
 
+        service.delete(id);
+    }
 
 
 }
