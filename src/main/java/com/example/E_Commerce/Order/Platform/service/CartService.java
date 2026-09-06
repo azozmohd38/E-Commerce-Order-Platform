@@ -52,6 +52,7 @@ public class CartService implements CrudService<CartDTO> {
                 repo.save(e)
         );
     }
+
     public void delete(Long id) {
         Cart e = find(id);
         e.setIsActive(false);
@@ -69,6 +70,7 @@ public class CartService implements CrudService<CartDTO> {
     private void copy(CartDTO d, Cart e) {
 
     }
+
     public CartItemDTO addProductToCart(
             Long cartId,
             Long productId,
@@ -127,6 +129,7 @@ public class CartService implements CrudService<CartDTO> {
                 cartItemRepository.save(item)
         );
     }
+
     public void removeItemFromCart(Long cartItemId) {
 
         CartItem item = EntityHelper.active(
@@ -134,9 +137,35 @@ public class CartService implements CrudService<CartDTO> {
                 cartItemId,
                 "CartItem"
         );
+    }
+
+    public CartItemDTO updateItemQuantity(
+            Long cartItemId,
+            Integer quantity) {
+
+
+        CartItem item = EntityHelper.active(
+                cartItemRepository,
+                cartItemId,
+                "CartItem"
+        );
+
+
+        Product product = item.getProduct();
+        if (quantity > product.getStockQuantity()) {
+            throw new RuntimeException(
+                    "Requested quantity exceeds available stock"
+            );
+        }
+
+
+        item.setQuantity(quantity);
+        return CartItemDTO.convertToDTO(
+                cartItemRepository.save(item)
+        );
+    }
+
 }
-
-
 
 
 
